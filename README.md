@@ -4,7 +4,7 @@
 
 This repository is the interface for the offline reinforcement learning benchmark NeoRL: A Near Real-World Benchmark for Offline Reinforcement Learning.
 
-The NeoRL repository contains datasets for training, tools for validation and corresponding environments for testing the trained policies. Current datasets are collected from three open-source environments, i.e., CityLearn, FinRL, IB, and three Gym-MuJoCo tasks. We use [SAC](https://arxiv.org/abs/1801.01290) to train on each of these domains, and then use policies around 25%, 50% and 75% of the highest episode return to generate three-level quality of datasets respectively for each task. Since the action spaces of these domains are continuous, the policy output is the mean and stdev of a Gaussian distribution. During data collection, with 80% chance we take the mean of the Gaussian policy and with 20% probability to sample from the trained policies to reflect the mistakes of human operators in real-world systems. The entire datasets can be reproduced with this [repo](https://agit.ai/Polixir/OfflineData).  Besides, we also provide a sales promotion task. 
+The NeoRL repository contains datasets for training, tools for validation and corresponding environments for testing the trained policies. Current datasets are collected from three open-source environments, i.e., CityLearn, FinRL, IB, and three Gym-MuJoCo tasks. We use [SAC](https://arxiv.org/abs/1801.01290) to train on each of these domains, and then use policies around 25%, 50% and 75% of the highest episode return to generate three-level quality of datasets respectively for each task. Since the action spaces of these domains are continuous, the policy output is the mean and stdev of a Gaussian distribution. During data collection, with 80% chance we take the mean of the Gaussian policy and with 20% probability to sample from the trained policies to reflect the mistakes of human operators in real-world systems. The entire datasets can be reproduced with this [repo](https://github.com/Polixir/OfflineData).  Besides, we also provide a sales promotion task. 
 
 
 More about the NeoRL benchmark can be found at http://polixir.ai/research/neorl and the following paper
@@ -13,14 +13,14 @@ More about the NeoRL benchmark can be found at http://polixir.ai/research/neorl 
 
 is now accessible at https://openreview.net/forum?id=jNdLszxdtra.
 
-The benchmark is supported by two additional repos, i.e. [OfflineRL](https://agit.ai/Polixir/OfflineRL) for training offline RL algorithms and [d3pe](https://agit.ai/Polixir/d3pe) for offline evaluation. Details for reproducing the benchmark can be found at [here](benchmark/).
+The benchmark is supported by two additional repos, i.e. [OfflineRL](https://github.com/Polixir/OfflineRL) for training offline RL algorithms and [d3pe](https://github.com/Polixir/d3pe) for offline evaluation. Details for reproducing the benchmark can be found at [here](benchmark/).
 
 ## Install NeoRL interface
 
 NeoRL interface can be installed as follows:
 
 ```
-git clone https://agit.ai/Polixir/neorl.git
+git clone https://github.com/Polixir/neorl.git
 cd neorl
 pip install -e .
 ```
@@ -35,7 +35,7 @@ So far "HalfCheetah-v3", "Walker2d-v3", and "Hopper-v3" are supported within MuJ
 
 ## Using NeoRL
 
-NeoRL uses the [OpenAI Gym](https://github.com/openai/gym) API. Tasks are created via the `neorl.make` function. A full list of all tasks is [available here](https://agit.ai/Polixir/neorl/wiki/Tasks).
+NeoRL uses the [OpenAI Gym](https://github.com/openai/gym) API. Tasks are created via the `neorl.make` function. A full list of all tasks is [available here](https://github.com/Polixir/neorl/wiki/Tasks).
 
 ```
 import neorl
@@ -49,14 +49,14 @@ env.step(env.action_space.sample())
 train_data, val_data = env.get_dataset(data_type = "low", train_num = 100)
 ```
 
-To facilitate setting different goals, users can provide custom reward function to `neorl.make()` while creating an env. See [usage and examples of `neorl.make()`](https://agit.ai/Polixir/neorl/wiki/Parameter-usage#user-content-usage-of-neorl-make) for more details.
+To facilitate setting different goals, users can provide custom reward function to `neorl.make()` while creating an env. See [usage and examples of `neorl.make()`](https://github.com/Polixir/neorl/wiki/Parameter-usage#user-content-usage-of-neorl-make) for more details.
 
 As a benchmark, in order to test algorithms conveniently and quickly, each task is associated 
 with a small training dataset and a validation dataset by default. They can be obtained by 
 `env.get_dataset()`. Meanwhile, for flexibility, extra parameters can be passed into `get_dataset()` 
 to get multiple pairs of datasets for benchmarking. Each task collects data using a low, medium, 
 or high level policy; for each task, we provide training data for a maximum of 10000 trajectories. 
-See [usage of `get_dataset()`](https://agit.ai/Polixir/neorl/wiki/Parameter-usage#user-content-usage-of-get-dataset) for more details about parameter usage.
+See [usage of `get_dataset()`](https://github.com/Polixir/neorl/wiki/Parameter-usage#user-content-usage-of-get-dataset) for more details about parameter usage.
 
 ## Data in NeoRL
 
